@@ -1,0 +1,82 @@
+{% extends 'base.html' %}{% block signup %}active{% endblock signup %} {% block body %}{% include 'dashboard.html' %}
+<h3 class="text-center mt-3">Food Donations to Receive</h3>
+<hr />
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <h5>Donor</h5>
+    </div>
+
+    <div class="col-2">
+      <h5>Quantity</h5>
+    </div>
+
+    <div class="col-2">
+      <h5>Description</h5>
+    </div>
+
+    <div class="col-2">
+      <h5>Address</h5>
+    </div>
+
+    <div class="col-2">
+        <h5>Volunteer</h5>
+    </div>
+  </div>
+</div>
+<hr>
+{% comment %} data section  {% endcomment %}
+<div class="container">
+    {% for donation in foodDonations %}
+        {% if donation.status == 'Delivered' %}
+        <form method="POST">
+            {%csrf_token%}
+            <div class="row">
+                {% for donor in donation.d_user.all %}
+                    {% comment %} {% duser = alluser.objects.get(id=donation.d_user.id) %} {% endcomment %}
+                    
+                            {% if donor.groups.all.0.name == 'donor' %}
+                                <div class="col-2">
+                                    {{ donor.first_name }}
+                                </div>
+
+                                <div class="col-2">
+                                    {{ donation.quantity }}
+                                </div>
+
+                                <div class="col-2">
+                                    {{ donation.description }}
+                                </div>
+
+                                <div class="col-2">
+                                    {{ donor.profile.address }}
+                                </div>
+                                
+                            {% endif %}
+                            {% if donor.groups.all.0.name == 'volunteer' %}
+                                <div class="col-2">
+                                    {{ donor.first_name }}
+                                </div>
+
+                                <input type="hidden" name="donation_id" value={{ donation.id }}>
+
+                                <div class="col-1">
+                                    <a class="btn btn-success" type="submit" href={% url 'food-inventory' donation.id %} name="status">Verify</a>
+                                </div>
+
+                                <div class="col-1">
+                                    <input class="btn btn-success" type="submit" value="Decline" name="status">
+                                </div>
+                            {% endif %}
+                        
+                    
+                        {% comment %} {%empty%} {% endcomment %}
+                {% endfor %}
+            </div>
+        </form>
+        <hr>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock body %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}{% load crispy_forms_tags %} {% block donate %}active{% endblock donate %}{% block body %}{% include 'dashboard.html' %}
+<h3 class="text-center">Cloth Donation Inventory</h3>
+<hr />
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <form method="POST" action="">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+          <label class="form-label">Shirt</label>
+          <input type="Number" class="form-control" placeholder="Enter Number of Shirts" name = "i_shirt">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Pant</label>
+            <input type="Number" class="form-control" placeholder="Enter Number of Pants" name = "i_pant">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">T-Shirt</label>
+            <input type="Number" class="form-control" placeholder="Enter Number of T-Shirts" name = "i_t_shirt">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Vest</label>
+            <input type="Number" class="form-control" placeholder="Enter Number of Vests" name = "i_vest">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Lungi</label>
+            <input type="Number" class="form-control" placeholder="Enter Number of Lungi" name = "i_lungi">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Salwar</label>
+            <input type="Number" class="form-control" placeholder="Enter Number of Salwar" name = "i_salwar">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Pajama</label>
+            <input type="Number" class="form-control" placeholder="Enter Number of Pajama" name = "i_pajama">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Saree</label>
+            <input type="Number" class="form-control" placeholder="Enter Number of Saree" name = "i_saree">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Panjabi</label>
+            <input type="Number" class="form-control" placeholder="Enter Number of Panjabi" name = "i_panjabi">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Blanket</label>
+            <input type="Number" class="form-control" placeholder="Enter Number of Blanket" name = "i_blanket">
+          </div>
+
+        {% comment %} <input type="hidden" name="d_user" value={{ request.user.id }}> {% endcomment %}
+
+        <input
+          class="btn btn-dark mt-5"
+          type="submit"
+          value="Save"
+          name="donate"
+        />
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock body %}

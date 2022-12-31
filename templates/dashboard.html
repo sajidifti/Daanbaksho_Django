@@ -1,0 +1,111 @@
+
+{% if user.is_authenticated %}
+{% comment %} TABS {% endcomment %}
+<ul class="nav nav-tabs">
+    {% comment %} <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="{% url '' %}">Overview</a>
+    </li> {% endcomment %}
+    {% if user.groups.all.0.name == 'donor' %}
+    <li class="nav-item">
+      <a class="nav-link active" href="{% url 'donorMoneyDonationHistory' %}">Money Donation History</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="{% url 'donorFoodDonationHistory' %}">Food Donation History</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="{% url 'donorClothDonationHistory' %}">Cloth Donation History</a>
+    </li>
+    {% comment %} <li class="nav-item">
+      <a class="nav-link" href="{% url '' %}">Project Donation History</a>
+    </li> {% endcomment %}
+    {% endif %}
+    {% if user.groups.all.0.name == 'volunteer' %}
+    <li class="nav-item">
+        <a class="nav-link active" href="{% url 'volunteerFoodDonationHistory' %}">Food Donation Pickup History</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="{% url 'volunteerClothDonationHistory' %}">Cloth Donation Pickup History</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'volunteer_food_donation_assignment' %}">Accepted Food Donations</a>
+      </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'volunteer_cloth_donation_assignment' %}">Accepted Cloth Donations</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'volunteer_food_donation_pickup' %}">Food Donations to Pick Up</a>
+      </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'volunteer_cloth_donation_pickup' %}">Cloth Donations to Pick Up</a>
+      </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'volunteer_food_donation_delivery' %}">Food Donations to Deliver</a>
+      </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'volunteer_cloth_donation_delivery' %}">Cloth Donations to Deliver</a>
+      </li>
+{% endif %}
+      {% if user.groups.all.0.name == 'public_relations_officer' %}
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'post-create' %}">New Post</a>
+      </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'media-create' %}">New Media</a>
+      </li>
+{% endif %}
+
+      {% if user.groups.all.0.name == 'project_coordinator' %}
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'projects-create' %}">New Project</a>
+      </li>
+      {% endif %}
+
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'profile' %}">Profile</a>
+      </li>
+      {% if user.groups.all.0.name == 'volunteer_coordinator' %}
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'volunteer_confirmation' %}">Volunteer Verification</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'volunteer_list' %}">Volunteer List</a>
+      </li>
+      {% endif %}
+
+      {% if user.groups.all.0.name == 'donation_coordinator' %}
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'food_donation_verification' %}">Pending Food Donations</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'cloth_donation_verification' %}">Pending Cloth Donations</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'money_donation_verification' %}">Pending Money Donations</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'project_donation_verification' %}">Pending Project Donations</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'donco_food_donation_received' %}">Food Donations to Receive</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'donco_cloth_donation_received' %}">Cloth Donations to Receive</a>
+      </li>
+      {% comment %} <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url '' %}">Inventory</a>
+      </li> {% endcomment %}
+      {% endif %}
+
+      {% if user.groups.all.0.name == 'distribution_coordinator' %}
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Distribute Cloths</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Distribute Food</a>
+      </li>
+      {% endif %}
+
+  </ul>
+  {% comment %} TABS END {% endcomment %}
+
+  {% endif %}

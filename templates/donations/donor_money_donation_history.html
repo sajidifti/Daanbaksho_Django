@@ -1,0 +1,51 @@
+{% extends 'base.html' %}{% block signup %}active{% endblock signup %} {% block body %}
+{% include 'dashboard.html' %}
+<h3 class="text-center mt-3">Money Donation History</h3>
+<hr />
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <h5>Amount</h5>
+    </div>
+
+    <div class="col-2">
+      <h5>Method</h5>
+    </div>
+
+    <div class="col-2">
+      <h5>Transaction ID</h5>
+    </div>
+
+    <div class="col-2">
+      <h5>Status</h5>
+    </div>
+
+    <div class="col-2">
+      <h5>Donation Date</h5>
+    </div>
+  </div>
+</div>
+<hr />
+{% comment %} data section {% endcomment %}
+<div class="container">
+  {% for donation in moneyDonations %}
+  <div class="row">
+    <div class="col-2">{{ donation.amount }}</div>
+
+    <div class="col-2">{{ donation.p_method }}</div>
+
+    <div class="col-2">{{ donation.txid }}</div>
+
+    <div class="col-2">{{ donation.status }}</div>
+
+    <div class="col-2">{{ donation.date_donated }}</div>
+  </div>
+  <hr />
+  {% endfor %}
+</div>
+
+<hr />
+
+
+
+{% endblock body %}

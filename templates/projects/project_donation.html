@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block donate %}active{% endblock donate %}{% block body %}
+{% include 'dashboard.html' %}
+<h3 class="text-center">Donate to {{ project }}</h3>
+<hr />
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <form method="POST" action="">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+          <label class="form-label">Amount</label>
+          <input type="Number" class="form-control" placeholder="Enter Donation Amount" name = "d_amount">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Payment Method</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+              <option selected>Choose...</option>
+              <option value="Bkash" name = "d_method">Bkash</option>
+              <option value="Nagad" name = "d_method">Nagad</option>
+              <option value="Rocket" name = "d_method">Rocket</option>
+            </select>
+          </div>
+        
+        <div class="mb-3">
+          <label class="form-label">Phone</label>
+          <input type="text" class="form-control" placeholder="Enter Phone Number" name = "d_phone">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Transaction ID</label>
+            <input type="text" class="form-control" placeholder="Enter The Transaction ID" name = "d_txid">
+          </div>
+
+        {% comment %} <input type="hidden" name="d_user" value={{ request.user.id }}> {% endcomment %}
+
+        <input
+          class="btn btn-dark mt-5"
+          type="submit"
+          value="Donate"
+          name="donate"
+        />
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock body %}

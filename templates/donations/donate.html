@@ -1,0 +1,10 @@
+{% extends 'base.html' %}{% block signup %}active{% endblock signup %} {% block body %}{% include 'dashboard.html' %}
+<h1 class="text-center">Sign Up</h1>
+<hr />
+<div class="d-grid gap-2 col-6 mx-auto">
+  <a class="btn btn-dark" href="{% url 'donate_money' %}" role="button">Donate Money</a>
+  <a class="btn btn-dark" href="{% url 'donate_food' %}" role="button">Donate Food</a>
+  <a class="btn btn-dark" href="{% url 'donate_cloth' %}" role="button">Donate Cloth</a>
+</div>
+
+{% endblock body %}

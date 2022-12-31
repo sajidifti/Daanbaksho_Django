@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}{% endblock title %}</title>
+    <link
+      href="{% static '/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <header>
+      <!-- navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="http://127.0.0.1:8000/">Daanbaksho</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a
+                  class="nav-link {% block home %}{% endblock home %}"
+                  aria-current="page"
+                  href="/"
+                  >Home</a
+                >
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link {% block project %}{% endblock project %}"
+                  aria-current="page"
+                  href="{% url 'projects-list' %}"
+                  >Project</a
+                >
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link {% block posts %}{% endblock posts %}"
+                  aria-current="page"
+                  href="{% url 'post-list' %}"
+                  >Posts</a
+                >
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="{% url 'media-list' %}"
+                  >Media</a
+                >
+              </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link disabled">Hello {{request.user}}!</a>
+              </li>
+
+              <!--Other Stuffs-->
+              {% if user.groups.all.0.name == 'donor' %}
+              <li class="nav-item">
+                <a
+                  class="nav-link {% block Donate %}{% endblock Donate %}"
+                  aria-current="page"
+                  href="{% url 'donate' %}"
+                  >Donate</a
+                >
+              </li>
+              {% endif %}
+
+              <!--Profile and Sign Out-->
+              <li class="nav-item">
+                <a
+                  class="nav-link {% block dashboard %}{% endblock dashboard %}"
+                  aria-current="page"
+                  href="{% url 'dashboard' %}"
+                  >Dashboard</a
+                >
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link {% block signout %}{% endblock signout %}"
+                  aria-current="page"
+                  href="{% url 'logout' %}"
+                  >Sign Out</a
+                >
+              </li>
+
+              {% else %}
+              <li class="nav-item">
+                <a
+                  class="nav-link {% block signin %}{% endblock signin %}"
+                  aria-current="page"
+                  href="{% url 'login' %}"
+                  >Sign In</a
+                >
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link {% block signup %}{% endblock signup %}"
+                  aria-current="page"
+                  href="{% url 'signup' %}"
+                  >Sign Up</a
+                >
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- navbar end -->
+    </header>
+
+    {% comment %} messages {% endcomment %}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md text-center mt-2">
+          {% if messages %} {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+          {% endfor %} {% endif %} {% block content %}{% endblock %}
+        </div>
+      </div>
+    </div>
+    <!-- block start -->
+
+    {% block body %} {% endblock body %}
+
+    <!-- tawk.to live chat -->
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+      (function () {
+        var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = "https://embed.tawk.to/62e03de837898912e95fcb80/1g8tv3lt6";
+        s1.charset = "UTF-8";
+        s1.setAttribute("crossorigin", "*");
+        s0.parentNode.insertBefore(s1, s0);
+      })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <!--scripts-->
+    <script
+      src="{% static '/js/bootstrap.bundle.min.js' %}"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+
+  <!-- Footer -->
+  <footer class="bd-footer py-4 py-md-5 mt-5 bg-light">
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05)">
+      © 2022 Copyright:
+      <a class="text-reset fw-bold" href="/">Daanbaksho</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+</html>

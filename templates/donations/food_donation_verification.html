@@ -1,0 +1,105 @@
+{% extends 'base.html' %}{% block signup %}active{% endblock signup %} {% block body %}
+{% include 'dashboard.html' %}
+<h3 class="text-center mt-3">Pending Food Donations</h3>
+<hr />
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <h5>Donor</h5>
+    </div>
+
+    <div class="col-2">
+      <h5>Quantity</h5>
+    </div>
+
+    <div class="col-2">
+      <h5>Description</h5>
+    </div>
+
+    <div class="col-2">
+      <h5>Address</h5>
+    </div>
+  </div>
+</div>
+<hr>
+{% comment %} data section  {% endcomment %}
+<div class="container">
+    {% for donation in foodDonations %}
+    {% if donation.status == 'Pending' %}
+      {% for donor in donation.d_user.all %}
+        {% comment %} {% duser = alluser.objects.get(id=donation.d_user.id) %} {% endcomment %}
+          <form method="POST">
+            {%csrf_token%}
+              <div class="row">
+                <div class="col-2">
+                  {{ donor.first_name }}
+                </div>
+
+                <div class="col-2">
+                  {{ donation.quantity }}
+                </div>
+
+                <div class="col-2">
+                  {{ donation.description }}
+                </div>
+
+                <div class="col-2">
+                  {{ donor.profile.address }}
+                </div>
+
+                <input type="hidden" name="donation_id" value={{ donation.id }}>
+
+                <div class="col-2">
+                  <input class="btn btn-success" type="submit" value="Accept" name="status">
+                </div>
+
+                <div class="col-2">
+                  <input class="btn btn-danger" type="submit" value="Decline" name="status">
+                </div>
+                
+              </div>
+          </form>
+          <hr>
+          {% comment %} {%empty%} {% endcomment %}
+          {% endfor %}
+          {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} Experimental {% endcomment %}
+
+{% comment %} {% for post in latest_blog_posts %}
+    <div class="row">
+        <div>
+            <h2 class="post-title">
+              <a href="/blog/post/{{ post.id }}/">
+                {{ post.title }}
+              </a>
+            </h2>
+            <h5 class="post-date">
+              {{ post.pub_date }} 
+              - 
+              {% for cat in post.category.all %}
+              {{ cat.name }}
+              {% if not forloop.last %}
+              ,
+              {% endif %}
+              {% endfor %}
+            </h5>
+            <p class="lead">{% autoescape off %}{{ post.content|safe }}{% endautoescape %}</p>
+        </div>
+    </div>
+    <hr>
+{% endfor %} {% endcomment %}

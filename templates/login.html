@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block signin %}active{% endblock signin %}{% block body %}
+<h1 class="text-center">Sign In</h1>
+<hr />
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <form method="POST" action="">
+        {% csrf_token %} {{form|crispy}}
+        <div class="border-top pt-3 mt-3">
+          <small class="text-muted">
+              Forgot Your Password? <a class="ml-2" href="{% url 'password_reset' %}">Reset Password</a>
+          </small>
+        </div>
+        <input
+          class="btn btn-dark mt-5"
+          type="submit"
+          value="Sign In"
+          name="signin"
+        />
+      </form>
+      
+      <div class="border-top pt-3 mt-5">
+        <small class="text-muted">
+            Need An Account? <a class="ml-2" href="{% url 'signup' %}">Sign Up Now</a>
+        </small>
+    </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}

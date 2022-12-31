@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body %}
+{% include 'dashboard.html' %}
+<hr />
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <form method="POST" action="">
+        {% csrf_token %}
+        <h2>Are You Sure You Want to Delete This Project?</h2>
+        <button class="btn btn-danger mt-3" type = "submit">Delete</button>
+        <a class="btn btn-dark mt-3" type = "submit" href={% url 'project-detail' object.id %}>Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock body %}

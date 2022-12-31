@@ -1,0 +1,42 @@
+{% extends 'base.html' %}{% block signup %}active{% endblock signup %} {% block body %}{% include 'dashboard.html' %}
+
+{% comment %} Cloth Dnation {% endcomment %}
+<h3 class="text-center mt-3">Cloth Donation History</h3>
+<hr />
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <h5>Number of Items</h5>
+    </div>
+
+    <div class="col-3">
+      <h5>Description</h5>
+    </div>
+
+    <div class="col-3">
+      <h5>Status</h5>
+    </div>
+
+    <div class="col-3">
+      <h5>Donation Date</h5>
+    </div>
+  </div>
+</div>
+<hr />
+{% comment %} data section {% endcomment %}
+<div class="container">
+  {% for cdonation in clothDonations %}
+  <div class="row">
+    <div class="col-3">{{ cdonation.total_items }}</div>
+
+    <div class="col-3">{{ cdonation.items_description }}</div>
+
+    <div class="col-3">{{ cdonation.status }}</div>
+
+    <div class="col-3">{{ cdonation.date_donated }}</div>
+  </div>
+  <hr />
+  {% endfor %}
+</div>
+
+{% endblock body %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block body %}
+{% include 'dashboard.html' %}
+<!-- project cards -->
+<h1 class="text-center mt-6">Projects</h1>
+<div class="container mt-5 text-center">
+  <div class="row m-2 align-items-center">
+    {% for proj in d_projects %}
+    <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+          <img class='img-fluid' src="{{ proj.image.url }}" width="360px" />
+          <h5 class="card-title">{{ proj.title }}</h5>
+          <p class="card-text">{{ proj.short_desc }}</p>
+          <a href="{% url 'projects-detail' proj.id %}" class="btn btn-primary"
+            >Read More</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock body %}

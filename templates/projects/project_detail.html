@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% include 'dashboard.html' %}
+<!-- project cards -->
+
+<div class="container mt-5" id="project">
+
+    <h2 class="article-title">{{ object.title }}</h2>
+    <h6 class="article-title">{{ object.short_desc }}</h6>
+    <div class="col-10">
+        <img class='img-fluid' src="{{ object.image.url }}" width="1600px" />
+    </div>
+    <h6 class="article-content">{{ object.content }}</h6>
+
+</div>
+
+<div class="container mt-5">
+    <a href="{% url 'donate-project' object.id %}" class="btn btn-dark">Donate</a>
+</div>
+
+{% endblock body %}

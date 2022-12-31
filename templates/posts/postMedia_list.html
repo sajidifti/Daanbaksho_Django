@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block body %}
+{% include 'dashboard.html' %}
+<!-- project cards -->
+<h1 class="text-center mt-6">Media</h1>
+<div class="container mt-5 text-center" id="project">
+  <div class="row m-2 align-items-center">
+    {% for media in medias %}
+    <div class="col-3">
+      <div class="card">
+        <div class="card-body">
+          <img class='img-fluid' src="{{ media.image.url }}" width="480px" />
+          <a href="{% url 'media-detail' media.id %}" class="btn btn-primary mt-2"
+            >View</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock body %}

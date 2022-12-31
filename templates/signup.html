@@ -1,0 +1,14 @@
+{% extends 'base.html' %}{% block signup %}active{% endblock signup %} {% block body %}
+<h1 class="text-center">Sign Up</h1>
+<hr />
+<div class="d-grid gap-2 col-6 mx-auto">
+  <a class="btn btn-dark" href="{% url 'donorsignup' %}" role="button">Sign Up as A Donor</a>
+  <a class="btn btn-dark" href="{% url 'volunteersignup' %}" role="button">Sign Up as A Volunteer</a>
+</div>
+<div class="border-top pt-3">
+  <small class="text-muted">
+      Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+  </small>
+</div>
+
+{% endblock body %}

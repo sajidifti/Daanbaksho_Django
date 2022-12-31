@@ -1,0 +1,66 @@
+{% extends 'base.html' %}{% block signup %}active{% endblock signup %} {% block body %}
+{% include 'dashboard.html' %}
+<h3 class="text-center mt-3">Volunteer Sign Up Requests</h3>
+<hr />
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <h5>Username</h5>
+    </div>
+
+    <div class="col-2">
+      <h5>Email Address</h5>
+    </div>
+
+    <div class="col-2">
+      <h5>First Name</h5>
+    </div>
+
+    <div class="col-2">
+      <h5>Last Name</h5>
+    </div>
+  </div>
+</div>
+<hr>
+{% comment %} data section  {% endcomment %}
+<div class="container">
+    {% for user in users %}
+      {% if user.groups.all.0.name == 'volunteer' %}
+        {% comment %} {% if not user.is_active %} {% endcomment %}
+        <form method="POST">
+          {%csrf_token%}
+            <div class="row">
+              <div class="col-2">
+                {{ user }}
+              </div>
+
+              <div class="col-2">
+                {{ user.email }}
+              </div>
+
+              <div class="col-2">
+                {{ user.first_name }}
+              </div>
+
+              <div class="col-2">
+                {{ user.last_name }}
+              </div>
+
+              <input type="hidden" name="user_id" value={{ user.id }}>
+
+              <div class="col-2">
+                <input class="btn btn-danger" type="submit" value="Terminate" name="status">
+              </div>
+
+              <div class="col-2">
+                <input class="btn btn-danger" type="submit" value="Ban" name="status">
+              </div>
+            </div>
+        </form>
+        <hr>
+        {% comment %} {% endif %} {% endcomment %}
+      {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock body %}
