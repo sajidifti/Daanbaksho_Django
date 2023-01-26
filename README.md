@@ -1,14 +1,26 @@
 # Daanbaksho
-Daanbaksho is donation management system.
-
-It is bulit with Django.
-
-To run this project, you need to install Python. Then you need to install some packages.
-Please Run:
+Daanbaksho is a donation management system.
+<br><br>
+It is bulit with Django.<br>
+<br><br><br>
+To run this project, you need to install Python. Then you need to install some packages.<br>
+Please Run:<br>
 $ pip install django django-crispy-forms six pillow
+<br><br>
+<br>
+<br>
+Replace Secret Key, Email Information and tawk.to API key with your own.
 
-Secret Key and email information are commented out in the settings.py file. Please uncommnet them and modify as per you need.
+<br><br>
 
-This project needs some finishing works. I did not have time to look into this after it was initially built. Any feedback is appreciated.
+Admin Panel Info:<br>
+Username: admin
+Password: admin1234
+<br>
+<br>
+You can create a new superuser by running $ python manage.py createsuperuser
+<br>
+<br> 
+This project needs some finishing works. Any feedback is appreciated.<br><br>
 
 Thank You.
