@@ -25,7 +25,10 @@ Username: admin<br>
 Password: admin1234
 <br>
 <br>
-You can create a new superuser by running $ python manage.py createsuperuser
+You can create a new superuser by running
+```
+$ python manage.py createsuperuser
+```
 <br>
 <br> 
 This project needs some finishing works. Any feedback is appreciated.<br><br>
