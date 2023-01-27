@@ -5,8 +5,15 @@ It is bulit with Django.<br>
 <br><br><br>
 To run this project, you need to install Python. Then you need to install some packages.<br>
 Please Run:<br>
+```
 $ pip install django django-crispy-forms six pillow
+```
 <br><br>
+To run this application, go to the project folder and open a terminal window and run:
+```
+$ python manage.py runserver
+```
+Then go to http://localhost:8000
 <br>
 <br>
 Replace Secret Key, Email Information and tawk.to API key with your own.
