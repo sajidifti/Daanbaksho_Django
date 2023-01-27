@@ -21,7 +21,7 @@ Replace Secret Key, Email Information and tawk.to API key with your own.
 <br><br>
 
 Admin Panel Info:<br>
-Username: admin
+Username: admin<br>
 Password: admin1234
 <br>
 <br>
