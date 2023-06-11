@@ -20,6 +20,7 @@ from accounts.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from accounts.views import dashboard
 from donations import views as don_views
 from posts.views import *
 from projects.views import *
