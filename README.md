@@ -6,12 +6,12 @@ It is bulit with Django.<br>
 To run this project, you need to install Python. Then you need to install some packages.<br>
 Please Run:<br>
 ```
-$ pip install django django-crispy-forms six pillow
+pip install django django-crispy-forms six pillow
 ```
 <br><br>
 To run this application, go to the project folder and open a terminal window and run:
 ```
-$ python manage.py runserver
+python manage.py runserver
 ```
 Then go to http://localhost:8000
 <br>
@@ -27,7 +27,7 @@ Password: admin1234
 <br>
 You can create a new superuser by running
 ```
-$ python manage.py createsuperuser
+python manage.py createsuperuser
 ```
 <br>
 <br> 
