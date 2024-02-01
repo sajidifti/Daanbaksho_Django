@@ -1,5 +1,5 @@
 # Daanbaksho
-Daanbaksho is a donation management system.
+Daanbaksho is a donation management system. It has functionalities to donate money, food, and clothes. It integrates Tawk.to chat API. The system is designed to handle 8 types of users including donors, volunteers, coordinators, and so on. There are options to post news/reports and project info.
 <br><br>
 It is bulit with Django.<br>
 <br><br><br>
